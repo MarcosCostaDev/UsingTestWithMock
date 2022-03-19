@@ -1,0 +1,105 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+
+
+<form method="post">
+    <div class="container">
+        <div class="row mb-2">
+            <div class="col">
+                <button type="submit" formnovalidate class="btn btn-primary" asp-page-handler="Random">Ramdom Pokemon</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Pokemon Number</span>
+                    </div>
+                    @Html.TextBoxFor(m => m.PokemonSpecifications.PokemonId, new { @class = "form-control"})
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Name</span>
+                    </div>
+                    @Html.TextBoxFor(m => m.PokemonSpecifications.Name, new { @class = "form-control" })
+         
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Color</span>
+                    </div>
+                    @Html.TextBoxFor(m => m.PokemonSpecifications.Color, new { @class = "form-control" })
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Weight</span>
+                    </div>
+                    @Html.TextBoxFor(m => m.PokemonSpecifications.Weight, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h3>Do you want to catch this pokemon?</h3>
+
+                <div class="row">
+                    <div class="col-3">
+                        Let me send it to you
+                    </div>
+                    <div class="col-6">
+                        <input asp-for="EmailTrainer" type="email" required />
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" asp-page-handler="CatchPokemon" class="btn btn-outline-primary">Catch @Model.PokemonSpecifications?.Name</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="alert-success">@Model.Message</div>
+        </div>
+
+
+        <div class="row">
+            <div class="alert-danger">@Model.ErrorMessage</div>
+        </div>
+
+
+
+    </div>
+
+</form>
